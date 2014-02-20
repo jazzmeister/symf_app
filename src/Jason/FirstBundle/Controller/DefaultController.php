@@ -39,7 +39,7 @@ class DefaultController extends Controller
 				'No product found for id '.$id
 			);
 		}else{
-			return new Response('This is your name: '.$product->getName().'<br/>Price: '.$product->getPrice().'</br>Description: '.$product->getDescription());
+			return new Response('This is your name: '.$product->getName().'<br/>Price: '.$product->getPrice().'</br>Description: '.$product->getDescription() . '<br/>Category Name: ' . $product->getCategory()->getName());
 		}
 	}
 
