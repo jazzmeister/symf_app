@@ -108,6 +108,7 @@ class DefaultController extends Controller
 			return new Response('This is your name: '.$product->getName().'<br/>Price: '.$product->getPrice().'</br>Description: '.$product->getDescription());
 		else 
 			return new Response('No products found');
+			*
 		*/
 	}
 }
