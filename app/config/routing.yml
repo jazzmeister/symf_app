@@ -1,0 +1,30 @@
+jason_first:
+    resource: "@JasonFirstBundle/Resources/config/routing.yml"
+    prefix:   /
+
+first:
+    path: /first/{name}
+    defaults: { _controller: JasonFirstBundle:First:index }
+
+
+jason_product_create:
+    path: /product/create
+    defaults: { _controller: JasonFirstBundle:Default:create }
+
+product_show:
+    path: /product/show/{id}
+    defaults: {_controller: JasonFirstBundle:Default:show }
+
+
+product_update:
+    path: /product/update/{id}
+    defaults: {_controller: JasonFirstBundle:Default:update }
+
+
+product_delete:
+    path: /product/delete/{id}
+    defaults: {_controller: JasonFirstBundle:Default:delete }
+
+product_showCertain:
+    path: /product/showCertain
+    defaults: {_controller: JasonFirstBundle:Default:showCertain }
