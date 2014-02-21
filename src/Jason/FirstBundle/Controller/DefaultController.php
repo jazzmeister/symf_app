@@ -3,9 +3,9 @@
 namespace Jason\FirstBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Jason\FirstBundle\Entity\Product;
 use Symfony\Component\HttpFoundation\Response;
+use Jason\FirstBundle\Entity\Category;
 
 class DefaultController extends Controller
 {
@@ -16,16 +16,32 @@ class DefaultController extends Controller
 
     public function createAction()
 	{
+		$category = new Category();
+		$category->setName('Main Products');
+
 	    $product = new Product();
 	    $product->setName('A Foo Bar');
 	    $product->setPrice('19.99');
 	    $product->setDescription('Lorem ipsum dolor');
+	    //relate this product to the category
+	    $product->setCategory($category);
 
 	    $em = $this->getDoctrine()->getManager();
 	    $em->persist($product);
+	    $em->persist($category);
 	    $em->flush();
 
-	    return new Response('Created product id '.$product->getId());
+	    return $this->render(
+	    	'JasonFirstBundle:Default:create.html.twig',
+	    	array('product_id' => $product->getId(),
+	    		'category_id' => $category->getId()
+	    	)
+	    );
+
+	    /*return new Response(
+	    	'Created product id '.$product->getId()
+	    	. '<br/>and category id: '.$category->getId()
+	    );*/
 	}
 
 	public function showAction($id)
@@ -99,9 +115,17 @@ class DefaultController extends Controller
 
 		$resultHTML ='';
 		foreach ($products as $product) {
-			$resultHTML .= 'ID: ' . $product->getId() . ' - Name: '. $product->getName() . ' - Price: ' . $product->getPrice() . '<br>';
+			$resultHTML .= 'ID: ' . $product->getId() . ' - Name: '. $product->getName() . ' - Price: ' . $product->getPrice() . '<br/>';
 		}
-		return new Response($resultHTML);
+
+		return $this->render(
+	    	'JasonFirstBundle:Default:showAll.html.twig',
+	    	array('showResults' => $resultHTML
+	    	)
+	    );
+
+
+		//return new Response($resultHTML);
 
 		/*
 		if ($product)
