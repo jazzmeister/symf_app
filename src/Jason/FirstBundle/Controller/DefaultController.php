@@ -120,9 +120,15 @@ class DefaultController extends Controller
 
 		return $this->render(
 	    	'JasonFirstBundle:Default:showAll.html.twig',
-	    	array('showResults' => $resultHTML
+	    	array('products' => $products
 	    	)
 	    );
+
+		/*return $this->render(
+	    	'JasonFirstBundle:Default:showAll.html.twig',
+	    	array('showResults' => $resultHTML
+	    	)
+	    );*/
 
 
 		//return new Response($resultHTML);
