@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block stylesheets %}
+            <link href="{{ asset('/css/main.css') }}" rel="stylesheet" />
+        {% endblock %}
+        <title>
+            {% block title %}
+                Welcome!
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        <div id="navigation">
+            {% block navigation %}
+               <a href="/">Home</a>
+               <a href="../product/showCertain">Products</a>
+            {% endblock %}
+        </div>
+
+        <div id="sidebar">
+            {% block sidebar %}
+                <ul>
+                      <li><a href="/">Home</a></li>
+                      <li><a href="/blog">Blog</a></li>
+                </ul>
+            {% endblock %}
+        </div>
+        
+        
+        <div>{% block content %}Welcome to my test site{% endblock %}</div>
+        <div>{% block footer %} {{ include ('::footer.html.twig') }} {% endblock %}</div>
+
+        {% block javascripts %}
+            <script src="{{ asset('/js/main.js') }}"></script>
+        {% endblock %}
+
+    </body>
+</html>
