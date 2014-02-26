@@ -1,3 +1,8 @@
+jason_second:
+    resource: "@JasonSecondBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 jason_first:
     resource: "@JasonFirstBundle/Resources/config/routing.yml"
     prefix:   /
@@ -28,3 +33,4 @@ product_delete:
 product_showCertain:
     path: /product/showCertain
     defaults: {_controller: JasonFirstBundle:Default:showCertain }
+

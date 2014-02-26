@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {% block stylesheets %}
+        {% stylesheets %}
             <link href="{{ asset('/css/main.css') }}" rel="stylesheet" />
-        {% endblock %}
+        {% endstylesheets %}
         <title>
             {% block title %}
                 Welcome!
@@ -29,6 +29,7 @@
         
         
         <div>{% block content %}Welcome to my test site{% endblock %}</div>
+        <div>{% block body %}{% endblock %}</div>
         <div>{% block footer %} {{ include ('::footer.html.twig') }} {% endblock %}</div>
 
         {% block javascripts %}
