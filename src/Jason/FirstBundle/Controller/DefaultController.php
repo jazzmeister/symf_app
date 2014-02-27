@@ -100,8 +100,9 @@ class DefaultController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
 		$query = $em->createQuery(
-    	'SELECT p
+    	'SELECT p, c
     	FROM JasonFirstBundle:Product p
+    	JOIN p.category c
     	WHERE p.price >= :price
     	ORDER BY p.price ASC'
 		)->setParameter('price', '0.01');
@@ -113,32 +114,10 @@ class DefaultController extends Controller
 		    $products = null;
 		}
 
-		$resultHTML ='';
-		foreach ($products as $product) {
-			$resultHTML .= 'ID: ' . $product->getId() . ' - Name: '. $product->getName() . ' - Price: ' . $product->getPrice() . '<br/>';
-		}
-
 		return $this->render(
 	    	'JasonFirstBundle:Default:showAll.html.twig',
-	    	array('products' => $products
+	    	array('products' => $products,
 	    	)
 	    );
-
-		/*return $this->render(
-	    	'JasonFirstBundle:Default:showAll.html.twig',
-	    	array('showResults' => $resultHTML
-	    	)
-	    );*/
-
-
-		//return new Response($resultHTML);
-
-		/*
-		if ($product)
-			return new Response('This is your name: '.$product->getName().'<br/>Price: '.$product->getPrice().'</br>Description: '.$product->getDescription());
-		else 
-			return new Response('No products found');
-			*
-		*/
 	}
 }
